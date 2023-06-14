@@ -31,10 +31,10 @@ class ProductManager {
     if (this.products.find((p) => p.id === id)) {
       const indexProduct = this.products.findIndex((dato) => dato.id == id);
       return console.log(
-        `Producto encontrado: ${this.products[indexProduct].title}`
+        `Product with id ${id}: ${this.products[indexProduct].title}`
       );
     } else {
-      console.log("Product not found");
+      console.log(`Product not found with id ${id}`);
     }
   }
 }
