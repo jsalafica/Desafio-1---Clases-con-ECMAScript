@@ -45,7 +45,7 @@ class ProductManager {
     if (product != undefined) {
       return product;
     } else {
-      return `Producto no encontrado con id: ${id}`;
+      return `Producto no encontrado con id ${id}`;
     }
   }
 }
@@ -53,7 +53,7 @@ class ProductManager {
 const product = new ProductManager();
 
 // Muestra arreglo vacío
-console.log("Muestro arreglo vacío ", product.getProducts());
+console.log("Muestro arreglo vacío", product.getProducts());
 
 // Cargo dos productos
 product.addProduct(
@@ -76,21 +76,24 @@ product.addProduct(
 );
 
 // Intento cargar un producto que ya existe su code
-product.addProduct(
-  "Papa",
-  "Papa lavada",
-  250,
+console.log(
+  "Intento cargar un producto repetido...",
+  product.addProduct(
+    "Papa",
+    "Papa lavada",
+    250,
 
-  "https://w7.pngwing.com/pngs/234/577/png-transparent-white-rice-jasmine-rice-basmati-asian-cuisine-rice-spike-food-harvest-cooking-thumbnail.png",
-  2,
-  30
+    "https://w7.pngwing.com/pngs/234/577/png-transparent-white-rice-jasmine-rice-basmati-asian-cuisine-rice-spike-food-harvest-cooking-thumbnail.png",
+    2,
+    30
+  )
 );
 
 // Muestro todos los productos
-console.log("Muestro todos los productos ", product.getProducts());
+console.log("Muestro todos los productos", product.getProducts());
 
 // Muestro un producto por su id
-console.log("Muestro producto con id 2 ", product.getProductById(2));
+console.log("Muestro producto con id 2", product.getProductById(2));
 
 // Prueba de un producto no encontrado por su id
 console.log(product.getProductById(5));
