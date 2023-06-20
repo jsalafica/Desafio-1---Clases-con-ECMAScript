@@ -53,7 +53,7 @@ class ProductManager {
 const product = new ProductManager();
 
 // Muestra arreglo vacío
-product.getProducts();
+console.log("Muestro arreglo vacío ", product.getProducts());
 
 // Cargo dos productos
 product.addProduct(
