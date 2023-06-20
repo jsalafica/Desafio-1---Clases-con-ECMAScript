@@ -6,8 +6,21 @@ class ProductManager {
   }
 
   addProduct(title, description, price, thumbnail, code, stock) {
-    if (this.products.find((p) => p.code === code)) {
-      console.log("Product already exists");
+    if (
+      title == undefined ||
+      description == undefined ||
+      price == undefined ||
+      thumbnail == undefined ||
+      code == undefined ||
+      stock == undefined
+    ) {
+      return "Todos los campos son obligatorios.";
+    }
+
+    let codeExists = this.products.some((dato) => dato.code == code);
+
+    if (codeExists) {
+      return "El producto ya existe.";
     } else {
       ProductManager.ultimoId++;
       const product = {
@@ -24,17 +37,15 @@ class ProductManager {
   }
 
   getProducts() {
-    return console.log(this.products);
+    return this.products;
   }
 
   getProductById(id) {
-    if (this.products.find((p) => p.id === id)) {
-      const indexProduct = this.products.findIndex((dato) => dato.id == id);
-      return console.log(
-        `Product with id ${id}: ${this.products[indexProduct].title}`
-      );
+    let product = this.products.find((dato) => dato.id === id);
+    if (product != undefined) {
+      return product;
     } else {
-      console.log(`Product not found with id ${id}`);
+      return `Producto no encontrado con id: ${id}`;
     }
   }
 }
@@ -76,10 +87,10 @@ product.addProduct(
 );
 
 // Muestro todos los productos
-product.getProducts();
+console.log("Muestro todos los productos ", product.getProducts());
 
 // Muestro un producto por su id
-product.getProductById(2);
+console.log("Muestro producto con id 2 ", product.getProductById(2));
 
 // Prueba de un producto no encontrado por su id
-product.getProductById(5);
+console.log(product.getProductById(5));
